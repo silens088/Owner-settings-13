@@ -8,54 +8,10 @@
 |:------:|:----:|:------:|:------:|:--------:|:--------:|:-------------:|:---------:|:---------:|:--------:|
 | ![Java](src/images/icons/Java.png) | ![Selenide](src/images/icons/Selenide.png) | ![Gradle](src/images/icons/Gradle.png) | ![JUnit5](src/images/icons/JUnit5.png) | ![Selenoid](src/images/icons/Selenoid.png) | ![Jenkins](src/images/icons/Jenkins.png) | ![Intelij_IDEA](src/images/icons/Intelij_IDEA.png) | ![Allure Report](src/images/icons/Allure_Report.png) | ![AllureTestOps](src/images/icons/AllureTestOps.png) | ![Telegram](src/images/icons/Telegram.png) |
 
-## Launch options
-
-[comment]: <> (## Используемые технологии и инструменты)
-
-[comment]: <> (![Intelij_IDEA]&#40;src/images/icons/Intelij_IDEA.png&#41;)
-
-[comment]: <> (![Java]&#40;src/images/icons/Java.png&#41;)
-
-[comment]: <> (![Selenide]&#40;src/images/icons/Selenide.png&#41;)
-
-[comment]: <> (![Selenoid]&#40;src/images/icons/Selenoid.png&#41;)
-
-[comment]: <> (![Gradle]&#40;src/images/icons/Gradle.png&#41;)
-
-[comment]: <> (![JUnit5]&#40;src/images/icons/JUnit5.png&#41;)
-
-[comment]: <> (![Allure Report]&#40;src/images/icons/Allure_Report.png&#41;)
-
-[comment]: <> (![AllureTestOps]&#40;src/images/icons/AllureTestOps.png&#41;)
-
-[comment]: <> (![Github]&#40;src/images/icons/Github.png&#41;)
-
-[comment]: <> (![Jenkins]&#40;src/images/icons/Jenkins.png&#41;)
-
-[comment]: <> (![Rest-Assured]&#40;src/images/icons/Rest-Assured.png&#41;)
-
-[comment]: <> (![Telegram]&#40;src/images/icons/Telegram.png&#41;)
-
-[comment]: <> (![Jira]&#40;src/images/icons/Jira.png&#41;)
-
-[comment]: <> (![Lombok]&#40;src/images/icons/Lombok.png&#41;)
-
 
 
 ## Allure report
 
-Each test has request and response attached
-
-![allure report](./images/AllureReport.png)
-
-## Response body
-
-![allure report](./images/ResponseBody.png)
-
-
----
-
----
 
 # Project in Allure TestOps with manual & automated tests
 <a target="_blank" href="https://allure.autotests.cloud/project/%s">allure.autotests.cloud/project/%s</a> (ask admin@qa.guru for access)
@@ -64,10 +20,9 @@ Each test has request and response attached
 <a target="_blank" href="https://jenkins.autotests.cloud/job/%s">jenkins.autotests.cloud/job/%s</a>
 
 
-# USAGE examples
+## Launch options
 
-### For run remote tests need fill remote.properties or to pass value:
-
+####For run remote tests need fill remote.properties or to pass value:
 * browser (default chrome)
 * browserVersion (default 89.0)
 * browserSize (default 1920x1080)
@@ -76,15 +31,14 @@ Each test has request and response attached
 * videoStorage (url address where you should get video)
 * threads (number of threads)
 
-
 Run tests with filled remote.properties:
 ```bash
-gradle clean test
+gradle clean -DremoteDriverUrl=https://%s:%s@selenoid.autotests.cloud/wd/hub/ -DvideoStorage=https://selenoid.autotests.cloud/video/ -Dthreads=1 test
 ```
 
-Run tests with not filled remote.properties:
+Run tests locally:
 ```bash
-gradle clean -DremoteDriverUrl=https://%s:%s@selenoid.autotests.cloud/wd/hub/ -DvideoStorage=https://selenoid.autotests.cloud/video/ -Dthreads=1 test
+gradle clean test
 ```
 
 Serve report:
@@ -92,12 +46,37 @@ Serve report:
 allure serve build/allure-results
 ```
 
+## Allure TestOps
 
-###### For further development there are some example tests in src/test/java/cloud.autotests/tests/demowebshop
-* remove @Disabled("...") annotation to run tests
-```bash
-gradle clean demowebshop
-```
+Click <a target="_blank" href="https://allure.autotests.cloud/project/948/dashboards">here</a> to see a list of automated test cases.
 
-:heart: <a target="_blank" href="https://qa.guru">qa.guru</a><br/>
-:blue_heart: <a target="_blank" href="https://t.me/qa_automation">t.me/qa_automation</a>
+Here are the test cases:
+
+![](src/images/reports/AllureTestOps001.png)
+
+Test launch overview:
+
+![](src/images/reports/AllureTestOps002.png)
+
+
+
+## Run tests - Jenkins job
+
+Jenkins is a tool from where you can run the tests.
+Click <a target="_blank" href="https://jenkins.autotests.cloud/job/009-Vitalii-ReqresApi/">here</a> to do that.
+
+![](src/images/reports/Jenkins001.png)
+
+
+### Allure report
+
+Each test has request and response attached
+
+![allure report](src/images/reports/AllureReport001.png)
+
+
+### Telegram report
+
+Each test builds sent report into telegram bot
+
+![](src/images/reports/TelegramReport001.png)
