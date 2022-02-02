@@ -29,8 +29,7 @@ public class MainPageTests extends TestBase {
 
     @Test
     @Tag("UI")
-    @Description("Тест для главной страницы")
-    @DisplayName("Главная страница содержит заголовок")
+    @DisplayName("Главная страница содержит заголовок c текстом: Тайская косметика купить в интернет магазине в Москве | Товары из Тайланда")
     void mainPageTitleTest() {
         step("Открываем страницу kupithai.ru", () ->
                 open("https://kupithai.ru/"));
@@ -69,10 +68,9 @@ public class MainPageTests extends TestBase {
                         .shouldBe(Condition.visible));
 
         step("Заголовок страницы содержит текст: Тайская косметика и товары из Тайланда", () -> {
-            String expectedText = "Тайская косметика и товары из Тайланда";
             $(By.id("common-home"))
                     .$(By.className("us-main-shop-title"))
-                    .shouldHave(text(expectedText)).shouldBe(Condition.visible);
+                    .shouldHave(text("Тайская косметика и товары из Тайланда")).shouldBe(Condition.visible);
         });
     }
 
@@ -96,9 +94,8 @@ public class MainPageTests extends TestBase {
     }
 
     @Test
-    @Story("Verification of the main page")
     @Tags({@Tag("web"), @Tag("UI")})
-    @DisplayName("Checking menu items on the main page")
+    @DisplayName("Проверяем основные элементы меню")
     public void checkMenuItemsTest() {
         step("Открываем страницу kupithai.ru", () ->
                 open("https://kupithai.ru/"));
@@ -120,7 +117,7 @@ public class MainPageTests extends TestBase {
         step("Open url 'https://kupithai.ru/'", () ->
                 open("https://kupithai.ru/"));
 
-        step("Console logs should not contain text 'SEVERE'", () -> {
+        step("Проверяем что консоль логов не содержит ошибок 'SEVERE'", () -> {
             String consoleLogs = DriverUtils.getConsoleLogs();
             String errorText = "SEVERE";
 
