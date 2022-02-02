@@ -35,7 +35,7 @@ public class MainPageTests extends TestBase {
         step("Открываем страницу kupithai.ru", () ->
                 open("https://kupithai.ru/"));
 
-        step("Заголовок содержит текст: <expectedTitle>", () -> {
+        step("Заголовок содержит текст: {expectedTitle} ", () -> {
             String expectedTitle = "Тайская косметика купить в интернет магазине в Москве | Товары из Тайланда";
             String actualTitle = title();
 
@@ -47,7 +47,7 @@ public class MainPageTests extends TestBase {
     @Test
     @Tag("UI")
     @Description("Тест для главной страницы")
-    @DisplayName("На странице отображается главный форма")
+    @DisplayName("На странице отображается главная форма")
     void mainPageMainFormVisibleTest() {
         step("Открываем страницу kupithai.ru", () ->
                 open("https://kupithai.ru/"));
@@ -68,11 +68,11 @@ public class MainPageTests extends TestBase {
                 $(By.className("us-main-shop-title"))
                         .shouldBe(Condition.visible));
 
-        step("Заголовок страницы содержит текст: 'Тайская косметика и товары из Тайланда'", () -> {
+        step("Заголовок страницы содержит текст: Тайская косметика и товары из Тайланда", () -> {
             String expectedText = "Тайская косметика и товары из Тайланда";
             $(By.id("common-home"))
                     .$(By.className("us-main-shop-title"))
-                    .shouldHave(text(expectedText));
+                    .shouldHave(text(expectedText)).shouldBe(Condition.visible);
         });
     }
 
