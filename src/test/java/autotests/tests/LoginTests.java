@@ -19,11 +19,11 @@ import static io.restassured.RestAssured.given;
 @Story("Login tests")
 public class LoginTests extends TestBase {
 
-    @BeforeAll
-    static void configureBaseUrl() {
-        RestAssured.baseURI = App.config.apiUrl();
-        Configuration.baseUrl = App.config.webUrl();
-    }
+//    @BeforeAll
+//    static void configureBaseUrl() {
+//        RestAssured.baseURI = App.config.apiUrl();
+//        Configuration.baseUrl = App.config.webUrl();
+//    }
 
     @Test
     @Tag("demowebshop")
