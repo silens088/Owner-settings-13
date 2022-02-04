@@ -1,7 +1,7 @@
 package autotests.tests;
 
-import autotests.config.demowebshop.App;
-import autotests.helpers.DriverUtils;
+//import autotests.config.App;
+//import autotests.helpers.DriverUtils;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import io.qameta.allure.Description;
@@ -19,13 +19,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Owner("vvelichko")
 @Story("MainPageTests")
 
+//наследуем до testBase - в котором конфигурации для веб драйвера - которые выполняются перед каждым тестом beforeAll
 public class MainPageTests extends TestBase {
 
-    @BeforeAll
-    static void configureBaseUrl() {
-        RestAssured.baseURI = App.config.apiUrl();
-        Configuration.baseUrl = App.config.webUrl();
-    }
+//    @BeforeAll
+//    static void configureBaseUrl() {
+//        RestAssured.baseURI = App.config.apiUrl();
+//        Configuration.baseUrl = App.config.webUrl();
+//    }
 
     @Test
     @Tag("UI")
@@ -111,17 +112,17 @@ public class MainPageTests extends TestBase {
                 $(".vi-oct-megamenu-wishlist-link").shouldNot(Condition.visible));
     }
 
-    @Test
-    @DisplayName("Page console log should not have errors")
-    void consoleShouldNotHaveErrorsTest() {
-        step("Open url 'https://kupithai.ru/'", () ->
-                open("https://kupithai.ru/"));
-
-        step("Проверяем что консоль логов не содержит ошибок 'SEVERE'", () -> {
-            String consoleLogs = DriverUtils.getConsoleLogs();
-            String errorText = "SEVERE";
-
-            assertThat(consoleLogs).doesNotContain(errorText);
-        });
-    }
+//    @Test
+//    @DisplayName("Page console log should not have errors")
+//    void consoleShouldNotHaveErrorsTest() {
+//        step("Open url 'https://kupithai.ru/'", () ->
+//                open("https://kupithai.ru/"));
+//
+//        step("Проверяем что консоль логов не содержит ошибок 'SEVERE'", () -> {
+//            String consoleLogs = DriverUtils.getConsoleLogs();
+//            String errorText = "SEVERE";
+//
+//            assertThat(consoleLogs).doesNotContain(errorText);
+//        });
+//    }
 }
